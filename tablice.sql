@@ -1,4 +1,4 @@
-CREATE TABLE igrac(
+CREATE TABLE igrac (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     ime CHAR(50) NOT NULL,
     prezime CHAR(50) NOT NULL,
@@ -7,7 +7,7 @@ CREATE TABLE igrac(
     pozicija CHAR(50)
 );
 
-CREATE TABLE utakmica(
+CREATE TABLE utakmica (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     domaca_ekipa CHAR(50) NOT NULL,
     gostujuca_ekipa CHAR(50) NOT NULL,
@@ -16,15 +16,15 @@ CREATE TABLE utakmica(
     datum DATE
 );
 
-CREATE TABLE statistika(
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
+CREATE TABLE statistika (
     utakmica_id INTEGER,
     igrac_id INTEGER,
     poeni INTEGER NOT NULL,
     skokovi INTEGER NOT NULL,
     asistencije INTEGER NOT NULL,
-    FOREIGN KEY (utakmica_id) REFERENCES utakmica(id) ON UPDATE CASCADE ON DELETE SET NULL
-    FOREIGN KEY (igrac_id) REFERENCES igrac(id) ON UPDATE CASCADE ON DELETE SET NULL
+    FOREIGN KEY (utakmica_id) REFERENCES utakmica(id) ON UPDATE CASCADE ON DELETE SET NULL,
+    FOREIGN KEY (igrac_id) REFERENCES igrac(id) ON UPDATE CASCADE ON DELETE SET NULL,
+    PRIMARY KEY (utakmica_id, igrac_id)
 );
 
 INSERT INTO igrac (ime, prezime, ekipa, broj_dresa, pozicija) VALUES
@@ -59,7 +59,7 @@ INSERT INTO utakmica (domaca_ekipa, gostujuca_ekipa, rezultat_domaci, rezultat_g
     ('Miami Heat', 'Denver Nuggets', 95, 108, '2023-06-10'),
     ('Denver Nuggets', 'Miami Heat', 94, 89, '2023-06-13');
 
-INSERT INTO statistika(utakmica_id, igrac_id, poeni, skokovi, asistencije) VALUES
+INSERT INTO statistika (utakmica_id, igrac_id, poeni, skokovi, asistencije) VALUES
     (1, 1, 24, 8, 8),
     (1, 2, 15, 4, 1),
     (1, 3, 18, 11, 2),
@@ -138,7 +138,7 @@ INSERT INTO statistika(utakmica_id, igrac_id, poeni, skokovi, asistencije) VALUE
     (10, 4, 10, 6, 6),
     (10, 5, 29, 13, 12),
     (10, 6, 25, 5, 1),
-    (10 7, 5, 2, 0),
+    (10, 7, 5, 2, 0),
     (10, 8, 4, 2, 2),
     (11, 1, 26, 4, 4),
     (11, 2, 21, 5, 3),
