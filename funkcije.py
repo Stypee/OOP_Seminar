@@ -185,7 +185,7 @@ def graf_statistika_igraca_u_jednoj_utakmici():
     plt.grid()
     plt.show()
 
-def grafovi_usporedbe_dva_igraca(igrac_1, igrac_2):
+def grafovi_usporedbe_dva_igraca():
     print('Izaberi 1. igrača')
     igrac_1 = izbor_igrac()
 

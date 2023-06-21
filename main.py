@@ -29,7 +29,7 @@ while running:
     elif akcija == 5:
         graf_statistika_igraca_u_jednoj_utakmici()
     elif akcija == 6:
-        grafovi_usporedbe_dva_igraca(1,5)
+        grafovi_usporedbe_dva_igraca()
     elif akcija == 7:
         prosjek_statistike_igraca()
     elif akcija == 8:
